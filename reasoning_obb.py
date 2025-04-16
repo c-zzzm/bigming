@@ -2,7 +2,6 @@ import os
 import cv2
 import numpy as np
 import onnxruntime as ort
-import logging
  
 """
 YOLO11 旋转目标检测OBB
@@ -52,15 +51,7 @@ def letterbox(img, new_shape=(640, 640), color=(0, 0, 0), auto=False, scale_fill
     img = cv2.copyMakeBorder(img, top, bottom, left, right, cv2.BORDER_CONSTANT, value=color)
     return img, ratio, (dw, dh)
  
-def load_model(weights):
-    """
-    加载ONNX模型并返回会话对象。
-    :param weights: 模型权重文件路径
-    :return: ONNX运行会话对象
-    """
-    session = ort.InferenceSession(weights, providers=['CPUExecutionProvider'])
-    logging.info(f"模型加载成功: {weights}")#写进日志
-    return session
+
  
 def _get_covariance_matrix(obb):
     """
@@ -278,7 +269,7 @@ def process_images_in_folder(folder_path, model_weights, output_folder, conf_thr
     :param iou_threshold: IoU 阈值，用于旋转NMS
     :param imgsz: 模型输入大小
     """
-    session = load_model(weights=model_weights)  # 调用函数，加载ONNX模型
+    session = ort.InferenceSession(model_weights, providers=['CPUExecutionProvider'])# 调用函数，加载ONNX模型
     
     if not os.path.exists(output_folder):
         os.makedirs(output_folder)  # 如果输出文件夹不存在，则创建
