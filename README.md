@@ -1,9 +1,11 @@
 # bigming
 this a good obb
-代码中，主要依赖opencv、onnxruntime、numpy这三个库,是不需要依赖ultralytics的
-对于opencv，主要用途是图像预处理、后处理和可视化，
-对于onnxruntime，主要用途是加载ONNX模型并执行推理
-对于numpy，用于数据格式转换、数学计算和数组操作
+
+
+代码中，主要依赖opencv、onnxruntime、numpy这三个库,是不需要依赖ultralytics的。
+对于opencv，主要用途是图像预处理、后处理和可视化。
+对于onnxruntime，主要用途是加载ONNX模型并执行推理。
+对于numpy，用于数据格式转换、数学计算和数组操作。
 
 整个obb推理过程
 ​​预处理阶段​​：
