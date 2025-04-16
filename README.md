@@ -1,5 +1,7 @@
-# bigming
+
 this a good obb
+
+所有代码存放于reasoning_obb.py文件中。
 
 
 代码中，主要依赖opencv、onnxruntime、numpy这三个库,是不需要依赖ultralytics的。
